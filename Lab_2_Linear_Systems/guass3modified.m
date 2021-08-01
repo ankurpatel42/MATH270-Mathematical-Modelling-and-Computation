@@ -1,6 +1,6 @@
 function x = guass3modified(A, b)
     [M, N] = size(A);
-    % Pivot row, largest absolute value in column for a 3x3 matrix    
+    % Pivot row, largest absolute value in column for a 3x3 matrix, column 1   
     row_swap_i = 1;
     largest_abs_col_val = 0;
     
@@ -14,7 +14,7 @@ function x = guass3modified(A, b)
     A([1,row_swap_i],:) = A([row_swap_i,1],:);
     b([1,row_swap_i],:) = b([row_swap_i,1],:);
     
-    % Guassian elimination
+    % Guassian elimination column 1
     i = 2;
     j = 1;
     r = -1 *((A(i,j) / A(j,j)));
@@ -25,7 +25,7 @@ function x = guass3modified(A, b)
     r = -1 *((A(i,j) / A(j,j)));
     [A, b] = rowop(A, b, i, j, r);
     
-    % Pivot row, largest absolute value in column for a 3x3 matrix    
+    % Pivot row, largest absolute value in column for a 3x3 matrix, column 2
     row_swap_i = 2;
     largest_abs_col_val = 0;
     
@@ -39,7 +39,7 @@ function x = guass3modified(A, b)
     A([2,row_swap_i],:) = A([row_swap_i,2],:);
     b([2,row_swap_i],:) = b([row_swap_i,2],:);
     
-    % Guassian elimination
+    % Guassian elimination, column 2
     i = 3;
     j = 2;
     r = -1 *((A(i,j) / A(j,j)));
