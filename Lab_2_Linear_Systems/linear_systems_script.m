@@ -17,9 +17,9 @@ b = [-2, 1, 0];
 
 %              rowop(A, b, i, j, r)
 [A, b] = rowop(A, b, 2, 1, -1);
-r = ((A(3,1)) / (A(1,1))) * -1;
+r = ((A(3,1)) / (A(1,1)));
 [A, b] = rowop(A, b, 3, 1, r);
-r = ((A(3,2)) / (A(2,2))) * -1;
+r = ((A(3,2)) / (A(2,2)));
 [A, b] = rowop(A, b, 3, 2, r);
 
 % disp(A);
@@ -29,10 +29,10 @@ A = rand(3);
 b = ones(3, 1);
 
 x = guass3(A, b);
-% disp(x);
+%disp(x);
 
 check_ax = A * x; % Check Ax = b
-% disp(check_ax);
+%disp(check_ax);
 
 %--------------------------Checkpoint 2------------------------------------
 
@@ -51,11 +51,10 @@ A = [0, 1, 2; 1, -1, 8; -4, -1, 3];
 b = ones(3, 1);
 
 x = guass3modified(A, b);
-% disp(x);
+%disp(x);
 
 check = A * x;
-% disp(check);
-
+%disp(check);
 %-------------------------Checkpoint 3-------------------------------------
 n = 10;
 A = rand(n);
