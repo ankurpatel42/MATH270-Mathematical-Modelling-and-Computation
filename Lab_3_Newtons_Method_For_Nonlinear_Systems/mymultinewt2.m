@@ -13,7 +13,7 @@ for k = 1:niter
         break;
     end
     x = next_x;
-    results(k, :) = [k, x(1), x(2), f(1), f(2)];
+    results(k, :) = [k, x(1), x(2), 0, 0];
 end
 
 function f_vector = f(x)
@@ -25,7 +25,7 @@ function J = jacobian_matrix(x, h)
     J = zeros(n,n);
     h_vector = zeros(1, n);
     for i = 1:n
-        h_vector(i) = h;
+        h_vector(i) = h; % something wrong with this
         col = (f(x + [h_vector(i);h_vector(i);h_vector(i)]) - f(x)) / h;
         for j = 1:n
             J(j,i) = col(j);

@@ -43,4 +43,4 @@ results = myerrors2;
 
 %----------------Numerical approximation of the Jacobian-------------------
 x = [1.5; 3.5; 2.5];
-mymultinewt2(x, 10, 1e-4);
+mymultinewt2(x, 2, 1e-4);
