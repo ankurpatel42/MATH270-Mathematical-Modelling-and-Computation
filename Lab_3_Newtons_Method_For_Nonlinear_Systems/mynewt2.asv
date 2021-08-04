@@ -17,19 +17,20 @@ function results = mynewt2(x, niter, tol)
 % - value of f at latest approximation.
 
 results = zeros(niter, 3);
-for k = 1:niter
-    f = -1 + (5.5 * x) - 4 * (x.^2) + 0.5 * (x.^3);
-    dfdx = (1.5 * x^2) - (8 * x) + 5.5;
-    next_x = x - (f / dfdx);
-    if (abs(next_x - x) / abs(next_x)) < tol
-        break
+    for k=1:niter
+    f=x.^3-x-0.3849;
+    df=3*x.^2-1;
+    dx = -f/df;
+    x=x+dx;
+    results(k,:)=[k,x,f];
+    if abs(dx/x)<tol
+        return
     end
-    x = next_x;
-    results(k, :) = [k, next_x, f];
+    end
 end
 
 % Checkpoint 5 & 6
 
 format long
 % help mynewt2.m
-mynewt2(1, 6)
+% mynewt2(1, 6)
