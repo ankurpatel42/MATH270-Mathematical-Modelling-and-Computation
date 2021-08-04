@@ -1,34 +1,21 @@
 function results =  mymultinewt(x, niter, tol)
 
 % A simple function M-file using Newton's method
-% to solve Chapra and Canale's exercise 6.4
-% f(x) = -1 +5.5x-4xˆ2+0.5xˆ3 = 0
-%
-% Usage: results = mynewt2(x, niter)
-%
-% Input/output variables:
-% x = initial approximation to solution
-% niter = number of iterations to be performed
-% tol = desired tolerance, used to compare against successive
-% approximations, if they are below tol then iteration stops
-% results = output matrix, k-th row records:
-% - number of iteration k,
-% - k-th approximation x,
-% - value of f at latest approximation.
 
-results = zeros(niter, 3);
+results = zeros(niter, 5);
 for k = 1:niter
-    f = x.^3-x-0.3849;
- 
-    dfdx = 3 * x.^2 - 1;
-    next_x = x - (f / dfdx);
-    if (abs(next_x - x) / abs(next_x)) < tol
-        results(k, :) = [k, next_x, f];
+    f = [log(x(1)) - x(2); (1/25)*(x(1).^2 + 2 * x(1) - 24) - x(2)];
+    J = [1/x(1), -1; (1/25)*(2*x(1) + 2), -1];
+    %f = [x(1)^2 + x(2)^2 - 4; x(1)^2 - x(2) - 1];
+    %J = [2*x(1), 2*x(2); 2*x(1), -1];
+    deltax = J \ -f;
+    next_x = x + deltax;
+    if (norm(next_x - x, inf) / norm(next_x, inf)) < tol
+        results(k, :) = [k, x(1), x(2), f(1), f(2)];
         break;
     end
     x = next_x;
-    results(k, :) = [k, next_x, f];
+    results(k, :) = [k, x(1), x(2), f(1), f(2)];
 end
 
 %format long
-% help mynewt2.m
