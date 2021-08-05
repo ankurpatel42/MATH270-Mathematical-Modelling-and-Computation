@@ -26,7 +26,7 @@ b = A * x;
 [relative_error, relative_residual] = myerrors(A, x);
 condition_number = cond(A,inf);
 
-results = myerrors2;
+%results = myerrors2;
 %fprintf('%3d %12.3e %12.3e %12.3e\n', results')
 
 %--------------------------Checkpoint 2------------------------------------
