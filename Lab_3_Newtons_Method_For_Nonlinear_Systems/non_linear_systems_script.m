@@ -1,6 +1,7 @@
 %------------------Multidimensional Newton’s method------------------------
-%mymultinewt([-1; 1], 20, 1e-4)
-%mymultinewt([5; 1], 20, 1e-4)
+%log = ln, log10 = log base 10
+% mymultinewt([4; 0], 20, 1e-4)
+% mymultinewt([0.25; -1], 20, 1e-4)
 
 %-------------------Errors when solving linear systems---------------------
 % A = [4, 3; 3, 2];
@@ -42,5 +43,7 @@ results = myerrors2;
 % Is the condition number a good guide to the accuracy of the calculated solution?
 
 %----------------Numerical approximation of the Jacobian-------------------
+% Checkpoint 3
 x = [1.5; 3.5; 2.5];
-mymultinewt2(x, 2, 1e-4);
+x1 = mymultinewt2(x, 10, 1e-4);
+
