@@ -1,4 +1,8 @@
 %------------------Multidimensional Newton’s method------------------------
+y = [-5;0.0001;4];
+x1 = log(y);
+x2 = (y.^(2) + 2*y - 24) / 25;
+plot(x1, y, x2, y);
 %log = ln, log10 = log base 10
 % mymultinewt([4; 0], 20, 1e-4)
 % mymultinewt([0.25; -1], 20, 1e-4)
@@ -46,4 +50,5 @@ condition_number = cond(A,inf);
 % Checkpoint 3
 x = [1.5; 3.5; 2.5];
 x1 = mymultinewt2(x, 10, 1e-4);
+%A = [x(1)^2 - x(1) * x(2) - 10; x(2) + 3 * x(1) * x(2)^2 - 57; x(1) + x(2) - 2 * x(3)];
 
