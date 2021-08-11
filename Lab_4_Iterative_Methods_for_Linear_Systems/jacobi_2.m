@@ -1,13 +1,11 @@
-function [results, converge_flag] = guassseidel(A, b, x, niter, tol)
+function [results, converge_flag] = jacobi_2(A, b, x, niter, tol)
     results = zeros(niter, 4);
     D = diag(diag(A));
     L = tril(A, -1);
     U = triu(A, 1);
-    inverse_L_D = inv(L + D);
     converge_flag = 0;
     for k = 1:niter
-        M = inverse_L_D * (-U); % this represents x^(k+1) = g(x^(k)) and the properties of the matrix M determine convergence
-        next_x = M*x + inverse_L_D*b;
+        next_x = transpose(zeros, 1);
         if (norm(next_x - x, inf) / norm(next_x, inf)) < tol
             converge_flag = 1;
             results(k, :) = [k, x(1), x(2), x(3)];
