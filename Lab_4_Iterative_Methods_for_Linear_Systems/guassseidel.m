@@ -16,6 +16,7 @@ function [results, converge_flag] = guassseidel(A, b, x, niter, tol)
         if (norm(next_x - x, inf) / norm(next_x, inf)) < tol
             converge_flag = 1;
             results(k, :) = [k, x(1), x(2), x(3)];
+            results = results(1:k, :);
             break;
         end
         x = next_x;
