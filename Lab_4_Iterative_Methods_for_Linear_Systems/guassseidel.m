@@ -22,4 +22,5 @@ function [results, converge_flag] = guassseidel(A, b, x, niter, tol)
         x = next_x;
         results(k, :) = [k, x(1), x(2), x(3)];
     end
+    results = results(1:k, :);
 end
