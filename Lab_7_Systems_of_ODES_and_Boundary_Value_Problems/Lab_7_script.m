@@ -1,0 +1,13 @@
+clc;
+h = 0.001;
+t_max = 5;
+t_min = 0;
+y0 = [pi/3, 0];
+n = t_max / h;
+t_span = [t_min, t_max];
+[T1, y1] = euler(@f, t_span, y0, n);
+[T2, y2] = heun(@f, t_span, y0, n);
+[T3, y3] = ode23(@f, t_span, y0, n);
+%plot(T1, y1, '-r', T2, y2, 'g', T3, y3, 'b');
+A = tridiagonal(1, 10);
+%disp(A);
