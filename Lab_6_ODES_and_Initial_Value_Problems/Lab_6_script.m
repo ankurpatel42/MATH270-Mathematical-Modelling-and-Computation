@@ -1,4 +1,5 @@
 clc
+set(0,'DefaultFigureWindowStyle','docked');
 %Q1 (a)
 f = @(t, y) (t.^2.*y - 1.1*y);
 f(1, 1);
@@ -15,7 +16,7 @@ initial_condition = 1;
 
 t_min = 0;
 t_max = 2;
-t_span = [min_t, t_max];
+t_span = [t_min, t_max];
 
 h = 0.5;
 n = t_max / h; %num steps
