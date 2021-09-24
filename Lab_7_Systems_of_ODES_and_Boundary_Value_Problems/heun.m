@@ -30,9 +30,8 @@ h = (tSpan(2) - tSpan(1))/n;
 for i = 1:n
    % auxiliary slope
    k1 = dydt(t(i), y(i,:));
-   k2 = dydt(t(i) + h, y(i,:) + h.*k1);
+   k2 = dydt(t(i+1)+h, y(i,:) + h*k1);
    % approximation of next function value
-   result = y(i,:) + (h/2).*(k1+k2);
-   y(i+1, 1) = result(2,1);
-   y(i+1, 2) = result(2,2);
+   result = y(i,:) + (h/2)*(k1+k2)';
+   y(i+1,:) = result;
 end
