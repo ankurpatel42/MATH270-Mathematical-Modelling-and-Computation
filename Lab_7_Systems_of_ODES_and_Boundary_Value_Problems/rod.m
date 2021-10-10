@@ -10,6 +10,5 @@ c = 2;
 h = L / n;
 [A, x_vec] = modifiedtridiagonal(h, n, a, b, c, Ta);
 x = A\x_vec;
-x
 T = linspace(0, L, n+1)';
 end
