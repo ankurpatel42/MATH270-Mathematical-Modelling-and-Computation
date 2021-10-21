@@ -7,6 +7,8 @@ x = linspace(a, b, n);
 f = ((lambda/factorial(k - 1)).*(x).^(k-1)) .* exp(-1*lambda.*x);
 p = max(f);
 m = p/b;
+g = a + (b-a).*rand(n, 1);
+u = a + ((m*b)-a).*rand(n, 1);
 observations = zeros(1, n);
 accepted = zeros(1, n);
 any(accepted == 0)
@@ -15,17 +17,19 @@ hold on;
 yline(m*b);
 plot(x, f);
 %plot(x, o);
-for i = 1:n
-    x = a + (b-a)*rand(1, 1);
-    y = a + ((m*b)-a).*rand(1, 1);
+i = 1;
+while any(accepted == 0)
+    x_star = g(i);
+    u_star = u(i);
     f = @(x)((lambda/factorial(k - 1)).*(x).^(k-1)) .* exp(-1*lambda.*x);
-    if y <= f(x)
-       plot(x, y, 'b.');
-        accepted(i) = x;
+    if u_star <= f(x_star)
+       plot(x_star, u_star, 'b.');
+        accepted(i) = x_star;
 %     else
 %         plot(x_star, u_star, 'r.')
     end
-    observations(i) = x;
+    observations(i) = x_star;
+    i = i + 1;
 end
 accepted_x_stars = nonzeros(accepted);
 disp(length(accepted_x_stars));
