@@ -3,36 +3,53 @@ lambda = 1;
 n = 1000;
 a = 0;
 b = 10;
-x = linspace(a, b, n);
-f = ((lambda/factorial(k - 1)).*(x).^(k-1)) .* exp(-1*lambda.*x);
-p = max(f);
-m = p/b;
-observations = zeros(1, n);
+t = linspace(a, b, n);
+f = @(x)((lambda/factorial(k - 1)).*(x).^(k-1)) .* exp(-1*lambda.*x);
+
+
 accepted = zeros(1, n);
-any(accepted == 0)
-%o = x.*exp(-1.*x);
-hold on;
-yline(m*b);
-plot(x, f);
-%plot(x, o);
-for i = 1:n
-    x = a + (b-a)*rand(1, 1);
-    y = a + ((m*b)-a).*rand(1, 1);
-    f = @(x)((lambda/factorial(k - 1)).*(x).^(k-1)) .* exp(-1*lambda.*x);
+j = 1;
+for i = 1:100000
+    x = 10*rand(1, 1);
+    y = max(f(t))*rand(1, 1);
     if y <= f(x)
-       plot(x, y, 'b.');
-        accepted(i) = x;
-%     else
-%         plot(x_star, u_star, 'r.')
+        accepted(j) = x;
+        j = j + 1;
     end
-    observations(i) = x;
+    if j == 1000
+        break
+    end
 end
-accepted_x_stars = nonzeros(accepted);
-disp(length(accepted_x_stars));
-histogram(accepted_x_stars, 'Normalization', 'pdf');
+hold on;
+histogram(accepted, 'Normalization', 'pdf');
+plot(t, f(t));
 hold off;
 
-sample_mean = mean(observations);
-sample_variance = var(observations);
-median_X = median(sample_mean);
+median_X = median(accepted);
+var_X = var(accepted);
+
+n = 5000;
+b = median_X;
+accepted = zeros(1, n);
+j = 1;
+for i = 1:100000
+    x = b*rand(1, 1);
+    y = max(f(t))*rand(1, 1);
+    if y <= f(x)
+        accepted(j) = x;
+        j = j + 1;
+    end
+    if j == 5000
+        break
+    end
+end
+
+n / i * (b * max(f(t)))
+
+% result = 0;
+% for i = 1:n
+%     result = result + f(accepted(i));
+% end
+% result = (b/n) * result
+    
 
